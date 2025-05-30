@@ -2,61 +2,109 @@
 
 ## Overview
 
-This project is a simple FastAPI application that exposes an API endpoint to retrieve the cities of a given country or region. It also includes automated tests to verify the API's behavior.
+This project demonstrates a simple API to retrieve cities by country/region, implemented in three different technologies: Python (FastAPI), Node.js (Express), and .NET (ASP.NET Core Minimal API). Each section below provides setup, run, and test instructions for its respective stack.
 
-## Project Structure
+---
 
-- `main.py`: The main FastAPI application. Defines a single route `/cities/{country}` that returns a list of cities for the specified country if available.
-- `test_main.py`: Contains automated tests for the API using pytest and FastAPI's TestClient.
+## Python (FastAPI)
 
-## Requirements
+### Files
 
-- Python 3.7+
-- FastAPI
-- Uvicorn
-- pytest
-- httpx
+- `main.py`: FastAPI app exposing `/cities/{country}`
+- `test_main.py`: Pytest tests for the API
 
-## Installation
-
-1. Open PowerShell and navigate to the project directory:
-   ```powershell
-   cd "Application path"
-   ```
-2. Install the required packages:
-   ```powershell
-   pip install fastapi uvicorn pytest httpx
-   ```
-
-## Running the API Server
-
-Start the FastAPI server with Uvicorn:
+### Setup & Run
 
 ```powershell
+# Install dependencies
+pip install fastapi uvicorn pytest httpx
+
+# Run the API server
 uvicorn main:app --reload
 ```
 
-- The API will be available at: http://127.0.0.1:8000
-- Interactive API docs: http://127.0.0.1:8000/docs
+- API: http://127.0.0.1:8000
+- Docs: http://127.0.0.1:8000/docs
 
-## Example Usage
-
-- To get cities in France:
-  - Visit: http://127.0.0.1:8000/cities/France
-- To get cities in a country not in the data (e.g., Spain):
-  - Visit: http://127.0.0.1:8000/cities/Spain (returns 404)
-
-## Running Tests
-
-Run the automated tests with:
+### Test
 
 ```powershell
 pytest test_main.py
 ```
 
-## Summary
+---
 
-- `main.py` exposes a REST API for cities by country.
-- `test_main.py` contains tests for both existing and non-existing countries.
-- All dependencies can be installed with pip.
-- The project is ready for extension and experimentation with FastAPI.
+## Node.js (Express)
+
+### Files
+
+- `node/app.js`: Express app exposing `/cities/:country`
+- `node/app.test.js`: Jest/Supertest tests for the API
+- `node/package.json`: Project config and scripts
+
+### Setup & Run
+
+```powershell
+# Change directory to node folder
+cd node
+
+# Install dependencies
+npm install
+
+# Start the server
+node app.js
+```
+
+- API: http://localhost:3000/cities/India
+
+### Test
+
+```powershell
+# If you see a script execution policy error, run this first:
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+# Then run tests
+npm test
+```
+
+---
+
+## .NET (ASP.NET Core Minimal API)
+
+### Files
+
+- `dotnet/Program.cs`: Minimal API exposing `/cities/{country}`
+- `dotnet/CitiesApiTests.cs`: xUnit integration tests
+- `dotnet/CitiesApi.csproj`: Project file
+
+### Setup & Run
+
+```powershell
+# Change directory to dotnet folder
+cd dotnet
+
+# Restore dependencies
+ dotnet restore
+
+# Run the API server
+ dotnet run
+```
+
+- API: http://localhost:5000/cities/India (or as shown in console)
+
+### Test
+
+```powershell
+# If you get a file lock error, ensure no server is running (Ctrl+C), or delete the exe in bin/Debug/net8.0
+# Run tests
+ dotnet test
+```
+
+---
+
+## General
+
+- `.gitignore` is set up to ignore build, cache, and dependency folders for all stacks.
+- Each stack is self-contained; follow the section relevant to your technology.
+
+Feel free to extend or modify any section as needed for your use case!

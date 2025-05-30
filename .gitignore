@@ -1,0 +1,31 @@
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+
+# Ignore .NET build output
+dotnet/bin/
+dotnet/obj/
+
+# Ignore Node.js dependencies
+node/node_modules/
+
+# Ignore environment files
+.env
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore test output
+*.log
+
+# Ignore Python virtual environments
+venv/
+.env/
+
+# Ignore package-lock and npm debug logs
+node/package-lock.json
+npm-debug.log
